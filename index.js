@@ -386,8 +386,8 @@ function validateEmail(str) {
 }
 
 const validateForm = (event) => {
-  let isValid = true; //assume good intentions...
-  let inputs = this.elements;
+  const isValid = true; //assume good intentions...
+  const inputs = this.elements;
   let index;
   let length;
   for (index = 0, length = inputs.length; index < length; index += 1){
@@ -404,7 +404,7 @@ const validateForm = (event) => {
   if (!isValid){
     event.preventDefault();
     event.stopPropagation();
-    alert("There are errors on the form and therefore cannot be submitted");
+    console.log("There are errors on the form and therefore cannot be submitted");
   } else {
     /**
      * Our form doesn't have an `action` attribute in its markup
