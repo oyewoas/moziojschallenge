@@ -385,11 +385,74 @@ function validateEmail(str) {
   return regexp.test(str);
 }
 
+const validateForm = (event) => {
+  let isValid = true; //assume good intentions...
+  let inputs = this.elements;
+  let index;
+  let length;
+  for (index = 0, length = inputs.length; index < length; index += 1){
+    let element = inputs[index];
+    if (element.required && element.value === ''){
+      isValid = isValid && false;
+    }
+    if(element.type === 'email'){
+      isValid = isValid && validateEmail(element.value); 
+    } else if (element.type === 'text'){
+      //Do something with text inputs...
+    }
+  }
+  if (!isValid){
+    event.preventDefault();
+    event.stopPropagation();
+    alert("There are errors on the form and therefore cannot be submitted");
+  } else {
+    /**
+     * Our form doesn't have an `action` attribute in its markup
+     * which is the one that indicates where to submit the form
+     * However, we have tied this function on the `submit` event
+     * and have direct access to the form;
+     * we could access the form here and set its action, along with the
+     * appropriate HTTP method.
+     * If nothing calls `event.preventDefault()` on this block, the form will be submited.
+     */
+    
+  }
+}
+
+const form = document.querySelectorAll('[name=myForm]');
+form[0].addEventListener('submit', validateForm, false);
+
+
+
+
 /**
  * Task 9: Provide some links to your previous work. It could be anything,
  * from your library to the website you made the layout for. For each link
  * please describe what you did there.
  */
 
-// <Link 1>: <description>
-// <Link 2>: <description>
+// <https://brillhealthweb.surge.sh/>: <While working at Sprinble Developed the Front End for Brillhealth website,i Converted UI/UX Mockup to Interactive Web Pages HTML, CSS, JavaScript, JQuery, Bootstrap.>
+
+// <https://natoursui.surge.sh/>: <Developed Front end prototype for an organization that engages in tourism services, did that while updating my skills in HTML, CSS and SASS>
+
+// <https://furnitureweb.surge.sh/>: <While working at Sprinble i Developed Front End prototype for an organization that engages in Furniture services, i converted UI/UX mockups to interactive web pages using HTML, CSS, JavaScript, JQuery, Bootstrap >
+
+// <https://constructionweb.surge.sh/>: <While working at Sprinble i Developed Front End prototype for an organization that engages in Construction services, i converted UI/UX mockups to interactive web pages using HTML, CSS, JavaScript, JQuery, Bootstrap>
+
+// <https://travelagencyweb.surge.sh/>: <While working at Sprinble i Developed Front End prototype for an organization that engages in Construction services, i converted UI/UX mockups to interactive web pages using HTML, CSS, JavaScript, JQuery, Bootstrap>
+
+// <https://searcengine.herokuapp.com/>: <While improving my react skills, Developed a react app with search functionality, i fetched an api from https://jsonplaceholder.typicode.com/ and implemented the search functionality >
+
+// <http://reactreduxnote.herokuapp.com/>: <While improving my react and redux skills, Developed a react app and used redux for state management, i created a simple note app with CRUD functionality, i used tachyons for styling>
+
+// <https://tizetiui.surge.sh/home.html>: <Developed a user history Front End for Tizeti Network limited, by concerting a UI/UX Mockup to interactive web page using HTML, CSS, JavaScript, BootStrap>
+
+// <http://bit.ly/myportfolio_web>: <Developed my personal portfolio website, i will still improve on it soon, built it using HTML, CSS, JavaScript, Bootstrap>
+
+// <https://ecommerce-web.surge.sh/productpage.html>: <While working at Sprinble i Developed Front End prototype for an ecommerce website product page, i converted UI/UX Mockup to interactive web pages using HTML, CSS, JavaScript, JQuery, Bootstrap>
+
+// <https://ecommerce-web.surge.sh/salespage.html>: <While working at Sprinble i Developed Front End prototype for an ecommerce website sales page, i converted UI/UX Mockup to interactive web pages using HTML, CSS, JavaScript, JQuery, Bootstrap>
+
+// <https://ecommerce-web.surge.sh/productpage1.html>: <While working at Sprinble i Developed Front End prototype for an ecommerce website product page i converted UI/UX Mockup to interactive web pages using HTML, CSS, JavaScript, JQuery, Bootstrap>
+
+
