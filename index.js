@@ -9,6 +9,33 @@
  * with the following output:
  * 'Mozio'.repeatify(3); // 'MozioMozioMozio';
  */
+
+const theString = String.prototype;
+theString.repeatString = function (repeatTimes){
+  /* We need to Extend String.prototype so all instances of String
+   * have access to this method
+   */
+    if (typeof repeatTimes !== 'number') return;
+    //Using ES6 repeat
+    return this.repeat(repeatTimes);
+};
+
+console.log('Mozio'.repeatString(3));
+
+theString.repeatString = function (repeatTimes) {
+  /* We need to Extend String.prototype so all instances of String
+   * have access to this method
+   */
+  if (typeof repeatTimes !== 'number') return
+  let repeatDisplay = '';
+  let index = 0;
+  //Using For Loop
+  for(index; index < repeatTimes; index += 1) {
+    repeatDisplay += this; //This is the value of the string
+  }
+  return repeatDisplay;
+}
+
 console.log('Mozio'.repeatString(3));
 
 /**
@@ -47,7 +74,7 @@ for (var i = 0; i < list2.length; i++) {
 })();
 
 /**
- * Task 5: Explain how "this" works in this particular scenario 
+ * Task 5: Explain how "this" works in this particular scenario
  * (how iPad is logged, followed by iPhone)
  */
 var product = 'iPhone';
@@ -75,11 +102,11 @@ function getFileExtension(file) {
 console.log(getFileExtension('mozio.png'));
 
 /**
- * Task 7: Return the longest String in the Array and 
+ * Task 7: Return the longest String in the Array and
  * in all nested arrays
  */
 function longestString(i) {
-    
+
 }
 var longest = longestString([
 	'coca-cola',
@@ -95,7 +122,7 @@ console.log(longest);
  * - If the required fields are not filled out, do not submit the form
  * - If the email is invalid, do not submit the form
  * - To validate the email, please call the validateEmail function
- * - The form should be able to have more fields added to it and 
+ * - The form should be able to have more fields added to it and
      still work, without changing the JavaScript
    - The form doesn't need to post to a specific URL but please comment
      inside the code to demonstrate where this would happen
@@ -107,11 +134,10 @@ function validateEmail(str) {
 }
 
 /**
- * Task 9: Provide some links to your previous work. It could be anything, 
- * from your library to the website you made the layout for. For each link 
+ * Task 9: Provide some links to your previous work. It could be anything,
+ * from your library to the website you made the layout for. For each link
  * please describe what you did there.
  */
- 
+
  // <Link 1>: <description>
  // <Link 2>: <description>
- 
